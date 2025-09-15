@@ -37,6 +37,18 @@ export default function Home() {
 
   }, []);
 
+  useEffect(() => {
+
+    if(currentLang.length > 1){
+      const filteredContents = myRepos.filter((rep) => rep.language.toLowerCase() === currentLang.toLowerCase() );
+
+      if(filteredContents) {
+        setFilteredRepos(filteredContents);
+      }
+    }
+
+  }, [currentLang]);
+
   const handleSearchBtn = () => {
 
     const filteredContents = myRepos.filter((rep) => rep.full_name.toLowerCase().includes(searchValue.toLowerCase()) );
